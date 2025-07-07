@@ -34,8 +34,11 @@ describe('visits home page and clicks links', ()=>{
 })
 
 
-describe('check element visibility', ()=>{
-    it('makes sure nav is visible on the page', ()=>{
-        cy.get('nav').should('be.visible')
+describe('wait for and assert async content', ()=>{
+    it('visits page and wait for data to load', ()=>{
+         cy.visit('http://localhost:5173/')
+         cy.get('a[href="/data"').click()
+         cy.contains('Loading ...')
+         cy.contains('Here is your data').should('be.visible')
     })
 })
